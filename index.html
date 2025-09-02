@@ -1,206 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Navoneel • BCA Student Portfolio</title>
-  <meta name="description" content="Navoneel — BCA student portfolio: projects, skills, and contact." />
-  <meta name="theme-color" content="#0ea5e9" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Navoneel • BCA Portfolio" />
-  <meta property="og:description" content="Projects, skills, and contact in one clean page." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/github.svg" />
-  <!-- Tailwind CSS CDN (easy & quick) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navoneel | Portfolio</title>
   <style>
-    /* Smooth scroll */
-    html { scroll-behavior: smooth; }
-    /* Simple fade-in */
-    [data-reveal] { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; }
-    [data-reveal].visible { opacity: 1; transform: translateY(0); }
-  </style>
-  <script>
-    // Dark mode preference
-    const userPref = localStorage.getItem('theme');
-    if (userPref === 'dark' || (!userPref && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
     }
-  </script>
+    header {
+      background: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+    nav {
+      background: #444;
+      text-align: center;
+      padding: 0.5rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9800;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #222;
+      color: #bbb;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .social a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #ff9800;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
-  <!-- Nav -->
-  <header class="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-b border-slate-200/60 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-semibold tracking-tight">Navoneel</a>
-      <nav class="hidden sm:flex gap-6 text-sm">
-        <a href="#about" class="hover:text-sky-600">About</a>
-        <a href="#skills" class="hover:text-sky-600">Skills</a>
-        <a href="#projects" class="hover:text-sky-600">Projects</a>
-        <a href="#contact" class="hover:text-sky-600">Contact</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button id="themeToggle" class="rounded-xl border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle theme">🌓</button>
-        <a href="#contact" class="hidden sm:inline-block rounded-xl bg-sky-600 text-white px-3 py-1.5 text-xs font-medium hover:bg-sky-700">Hire / Collaborate</a>
-      </div>
-    </div>
+<body>
+  <header>
+    <h1>Navoneel</h1>
+    <p>BCA Student | Aspiring Developer</p>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="relative">
-    <div class="max-w-5xl mx-auto px-4 py-16 sm:py-24 grid md:grid-cols-2 gap-10 items-center">
-      <div data-reveal class="space-y-4">
-        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">
-          Hi, I'm <span class="text-sky-600">Navoneel</span> 👋
-        </h1>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300">
-          First‑year <strong>BCA</strong> student, learning to build useful things with code. I love clean UI, clear logic, and a little bit of chaos (the fun kind).
-        </p>
-        <div class="flex gap-3 flex-wrap">
-          <a href="#projects" class="rounded-2xl bg-sky-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-sky-700">View Projects</a>
-          <a href="https://github.com/your-username" target="_blank" class="rounded-2xl border border-slate-300 dark:border-slate-700 px-5 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">GitHub</a>
-          <a href="resume.pdf" class="rounded-2xl border border-sky-300 text-sky-700 dark:text-sky-300 dark:border-sky-700 px-5 py-2.5 text-sm hover:bg-sky-50 dark:hover:bg-slate-800">Download Résumé</a>
-        </div>
-      </div>
-      <div data-reveal class="md:justify-self-end">
-        <!-- Simple avatar / placeholder -->
-        <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-3xl bg-gradient-to-br from-sky-500 to-indigo-500 p-1">
-          <div class="w-full h-full rounded-[22px] bg-white dark:bg-slate-950 grid place-items-center text-5xl">
-            🧑🏻‍💻
-          </div>
-        </div>
-      </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m Navoneel, a BCA student passionate about technology, coding, and learning new things. This is my personal website where I share my journey and projects.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>💻 Calculator in C</li>
+      <li>🎮 Number Guessing Game</li>
+      <li>📂 More coming soon…</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>You can reach me here:</p>
+    <div class="social">
+      <a href="https://github.com/navogit55" target="_blank">GitHub</a>
+      <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a>
+      <a href="mailto:navogithub@gmail.com">Email</a>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-14">
-      <h2 class="text-2xl font-bold mb-4">About me</h2>
-      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
-        I'm currently pursuing a <strong>Bachelor of Computer Applications</strong>. My interests include
-        <em>programming in C</em>, human‑computer interaction, and building small utilities that make everyday tasks easier.
-        I'm actively learning the fundamentals: data structures, algorithms, version control, and web development.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-14">
-      <h2 class="text-2xl font-bold mb-6">Skills</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-2">Core</h3>
-          <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
-            <li>C (beginner → intermediate)</li>
-            <li>Problem solving & debugging</li>
-            <li>Git & GitHub basics</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-2">Web</h3>
-          <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
-            <li>HTML5 & modern CSS</li>
-            <li>Basic JS / DOM</li>
-            <li>Responsive design</li>
-          </ul>
-        </div>
-        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-2">Tooling</h3>
-          <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
-            <li>VS Code</li>
-            <li>Linux/macOS terminal basics</li>
-            <li>Homebrew, GitHub Pages</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-14">
-      <div class="flex items-end justify-between gap-4 mb-6">
-        <h2 class="text-2xl font-bold">Projects</h2>
-        <a href="https://github.com/your-username?tab=repositories" target="_blank" class="text-sm text-sky-700 dark:text-sky-300 hover:underline">All repos →</a>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <!-- Card 1 -->
-        <article class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold">Number Guessing Game (C)</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">A simple CLI game practicing loops, conditionals, and randomization.</p>
-          <div class="flex gap-3 mt-3">
-            <a href="https://github.com/your-username/number-game-c" target="_blank" class="text-sm px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Code</a>
-            <a href="#" class="text-sm px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Readme</a>
-          </div>
-        </article>
-        <!-- Card 2 -->
-        <article class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold">Basic Portfolio Site</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">This very website — clean single file, deployable on GitHub Pages.</p>
-          <div class="flex gap-3 mt-3">
-            <a href="https://github.com/your-username/your-username.github.io" target="_blank" class="text-sm px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Repo</a>
-            <a href="https://your-username.github.io" target="_blank" class="text-sm px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Live</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-14">
-      <h2 class="text-2xl font-bold mb-4">Contact</h2>
-      <p class="text-slate-600 dark:text-slate-300 mb-6">Open to internships, collaborations, and hackathon teams. Reach out!</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="mailto:youremail@example.com" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Email</a>
-        <a href="https://github.com/your-username" target="_blank" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">GitHub</a>
-        <a href="https://www.linkedin.com/in/your-username" target="_blank" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">LinkedIn</a>
-        <a href="https://www.instagram.com/yourusername" target="_blank" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Instagram</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-slate-500 dark:text-slate-400">
-      © <span id="year"></span> Navoneel • Built with HTML + Tailwind • Deployed on GitHub Pages
-    </div>
+  <footer>
+    <p>© 2025 Navoneel. Built with ❤️ on GitHub Pages.</p>
   </footer>
-
-  <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const el = document.documentElement;
-      el.classList.toggle('dark');
-      localStorage.setItem('theme', el.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // Simple reveal on scroll
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-  </script>
-
-  <!-- JSON-LD for better SEO (optional) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Navoneel",
-    "jobTitle": "BCA Student",
-    "url": "https://your-domain-or-username.github.io",
-    "sameAs": [
-      "https://github.com/your-username",
-      "https://www.linkedin.com/in/your-username",
-      "https://www.instagram.com/yourusername"
-    ]
-  }
-  </script>
 </body>
 </html>
