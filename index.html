@@ -1,35 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Navoneel • BCA Student & Aspiring Software Engineer</title>
-  <meta name="description" content="Navoneel — BCA student building projects in C and web development. Portfolio, projects, and contact." />
+  <title>Navoneel Bhattacharya • BCA Student</title>
+  <meta name="description" content="Navoneel Bhattacharya — BCA student focused on C programming, problem solving, and clean web interfaces." />
   <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Navoneel • BCA Portfolio" />
-  <meta property="og:description" content="BCA student | C programming | Web fundamentals | Projects & contact" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/github.svg" />
-
-  <!-- Tailwind -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- GLOBAL STYLES -->
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    /* ===== Reveal Animation ===== */
     [data-reveal] {
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity .4s ease, transform .4s ease;
+      transform: translateY(24px) scale(0.98);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    [data-reveal].visible {
+
+    [data-reveal].reveal-visible {
       opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ===== Floating Avatar ===== */
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(56,189,248,.25);
+    }
+
+    .btn:active {
       transform: translateY(0);
     }
   </style>
 
+  <!-- Dark mode preference -->
   <script>
     const pref = localStorage.getItem("theme");
     if (pref === "dark" || (!pref && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -40,23 +71,25 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
 
-<!-- NAV -->
-<header class="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-b border-slate-200/60 dark:border-slate-800">
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-40 bg-white/70 dark:bg-slate-900/60 backdrop-blur border-b border-slate-200/60 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="#home" class="font-semibold tracking-tight">Navoneel</a>
+    <a href="#home" class="font-semibold tracking-tight">
+      Navoneel Bhattacharya
+    </a>
 
     <nav class="hidden sm:flex gap-6 text-sm">
-      <a href="#about" class="hover:text-sky-600">About</a>
-      <a href="#skills" class="hover:text-sky-600">Skills</a>
-      <a href="#projects" class="hover:text-sky-600">Projects</a>
-      <a href="#contact" class="hover:text-sky-600">Contact</a>
+      <a href="#about" class="hover:text-sky-500">About</a>
+      <a href="#skills" class="hover:text-sky-500">Skills</a>
+      <a href="#projects" class="hover:text-sky-500">Projects</a>
+      <a href="#contact" class="hover:text-sky-500">Contact</a>
     </nav>
 
-    <div class="flex gap-2 items-center">
-      <button id="themeToggle" class="px-3 py-1.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700">
+    <div class="flex items-center gap-2">
+      <button id="themeToggle" class="px-3 py-1.5 text-xs rounded-xl border">
         🌓
       </button>
-      <a href="#contact" class="hidden sm:inline-block px-3 py-1.5 text-xs rounded-xl bg-sky-600 text-white hover:bg-sky-700">
+      <a href="#contact" class="hidden sm:inline-block px-3 py-1.5 text-xs rounded-xl bg-sky-600 text-white">
         Hire / Collaborate
       </a>
     </div>
@@ -64,39 +97,41 @@
 </header>
 
 <!-- HERO -->
-<section id="home">
-  <div class="max-w-5xl mx-auto px-4 py-16 sm:py-24 grid md:grid-cols-2 gap-10 items-center">
-    <div data-reveal class="space-y-4">
-      <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">
-        Hi, I’m <span class="text-sky-600">Navoneel</span> 👋
-      </h1>
+<section id="home" class="relative pt-32">
+  <!-- Glow -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-1/3 left-1/2 w-[500px] h-[500px]
+                -translate-x-1/2 -translate-y-1/2
+                bg-sky-500/20 blur-[120px] rounded-full"></div>
+  </div>
 
-      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300">
-        First-year <strong>BCA student</strong> learning software engineering fundamentals by building real projects.
-        Focused on <strong>C programming</strong>, problem-solving, and clean web interfaces.
+  <div class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div data-reveal>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
+        Hi, I’m <span class="text-sky-500">Navoneel</span> 👋
+      </h1>
+      <p class="text-slate-600 dark:text-slate-300 mb-6">
+        First-year <strong>BCA student</strong> building software fundamentals through real projects.
+        Focused on <strong>C programming</strong>, problem-solving, and clean interfaces.
       </p>
 
       <div class="flex gap-3 flex-wrap">
-        <a href="#projects" class="px-5 py-2.5 rounded-2xl bg-sky-600 text-white text-sm font-semibold hover:bg-sky-700">
+        <a href="#projects" class="btn px-5 py-2.5 rounded-2xl bg-sky-600 text-white text-sm font-semibold">
           View Projects
         </a>
-
-        <!-- TODO: replace with your GitHub -->
-        <a href="https://github.com/YOUR_USERNAME" target="_blank"
-           class="px-5 py-2.5 rounded-2xl border border-slate-300 dark:border-slate-700 text-sm">
+        <a href="https://github.com/navogit55" target="_blank"
+           class="btn px-5 py-2.5 rounded-2xl border text-sm">
           GitHub
         </a>
-
-        <!-- TODO: add resume.pdf -->
         <a href="resume.pdf"
-           class="px-5 py-2.5 rounded-2xl border border-sky-300 text-sky-700 dark:text-sky-300 text-sm">
+           class="btn px-5 py-2.5 rounded-2xl border text-sm">
           Download Résumé
         </a>
       </div>
     </div>
 
-    <div data-reveal class="md:justify-self-end">
-      <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-3xl bg-gradient-to-br from-sky-500 to-indigo-500 p-1">
+    <div data-reveal class="justify-self-center animate-float">
+      <div class="w-56 h-56 rounded-3xl bg-gradient-to-br from-sky-500 to-indigo-500 p-1">
         <div class="w-full h-full rounded-[22px] bg-white dark:bg-slate-950 grid place-items-center text-5xl">
           🧑🏻‍💻
         </div>
@@ -107,12 +142,11 @@
 
 <!-- ABOUT -->
 <section id="about" class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-14">
+  <div class="max-w-5xl mx-auto px-4 py-14" data-reveal>
     <h2 class="text-2xl font-bold mb-4">About</h2>
-    <p class="max-w-3xl text-slate-600 dark:text-slate-300">
+    <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
       I’m pursuing a <strong>Bachelor of Computer Applications (BCA)</strong> and building a strong foundation
-      in programming, data structures, and software design.
-      I enjoy turning small ideas into working tools and steadily increasing complexity.
+      in programming, data structures, and software design. I enjoy turning small ideas into working tools.
     </p>
   </div>
 </section>
@@ -120,33 +154,33 @@
 <!-- SKILLS -->
 <section id="skills" class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold mb-6">Skills</h2>
+    <h2 class="text-2xl font-bold mb-6" data-reveal>Skills</h2>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="p-5 rounded-2xl border bg-white dark:bg-slate-950">
+      <div data-reveal class="p-5 rounded-2xl border bg-white/80 dark:bg-slate-950/80 backdrop-blur hover:-translate-y-1 transition">
         <h3 class="font-semibold mb-2">Programming</h3>
-        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
+        <ul class="text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
           <li>C (loops, functions, arrays)</li>
-          <li>Problem solving & debugging</li>
-          <li>Basic DSA concepts</li>
+          <li>Debugging & problem solving</li>
+          <li>Basic DSA</li>
         </ul>
       </div>
 
-      <div class="p-5 rounded-2xl border bg-white dark:bg-slate-950">
+      <div data-reveal class="p-5 rounded-2xl border bg-white/80 dark:bg-slate-950/80 backdrop-blur hover:-translate-y-1 transition">
         <h3 class="font-semibold mb-2">Web</h3>
-        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
+        <ul class="text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
           <li>HTML5 & CSS</li>
           <li>Tailwind CSS</li>
-          <li>Basic JavaScript & DOM</li>
+          <li>JavaScript & DOM</li>
         </ul>
       </div>
 
-      <div class="p-5 rounded-2xl border bg-white dark:bg-slate-950">
+      <div data-reveal class="p-5 rounded-2xl border bg-white/80 dark:bg-slate-950/80 backdrop-blur hover:-translate-y-1 transition">
         <h3 class="font-semibold mb-2">Tools</h3>
-        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300">
+        <ul class="text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
           <li>Git & GitHub</li>
           <li>VS Code</li>
-          <li>Linux / macOS terminal</li>
+          <li>Linux / macOS</li>
         </ul>
       </div>
     </div>
@@ -156,58 +190,52 @@
 <!-- PROJECTS -->
 <section id="projects" class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold mb-6">Projects</h2>
+    <h2 class="text-2xl font-bold mb-6" data-reveal>Projects</h2>
 
     <div class="grid md:grid-cols-2 gap-4">
-      <article class="p-5 rounded-2xl border bg-white dark:bg-slate-950">
+      <div data-reveal class="p-5 rounded-2xl border bg-white/80 dark:bg-slate-950/80 backdrop-blur hover:-translate-y-1 transition">
         <h3 class="font-semibold">Number Guessing Game (C)</h3>
         <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
           CLI game built in C to practice control flow, randomness, and input handling.
         </p>
-        <div class="flex gap-3 mt-3">
-          <!-- TODO -->
-          <a href="#" class="text-sm px-3 py-1.5 rounded-xl border">Code</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="p-5 rounded-2xl border bg-white dark:bg-slate-950">
+      <div data-reveal class="p-5 rounded-2xl border bg-white/80 dark:bg-slate-950/80 backdrop-blur hover:-translate-y-1 transition">
         <h3 class="font-semibold">Personal Portfolio Website</h3>
         <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
           Single-page responsive portfolio built with HTML & Tailwind CSS.
         </p>
-        <div class="flex gap-3 mt-3">
-          <!-- TODO -->
-          <a href="#" class="text-sm px-3 py-1.5 rounded-xl border">Repo</a>
-          <a href="#" class="text-sm px-3 py-1.5 rounded-xl border">Live</a>
-        </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-14">
+  <div class="max-w-5xl mx-auto px-4 py-14" data-reveal>
     <h2 class="text-2xl font-bold mb-4">Contact</h2>
-    <p class="mb-6 text-slate-600 dark:text-slate-300">
+    <p class="text-slate-600 dark:text-slate-300 mb-6">
       Open to internships, collaborations, and learning opportunities.
     </p>
 
     <div class="flex flex-wrap gap-3">
-      <!-- TODO -->
-      <a href="mailto:YOUREMAIL@example.com" class="px-4 py-2 rounded-xl border">Email</a>
-      <a href="https://github.com/YOUR_USERNAME" class="px-4 py-2 rounded-xl border">GitHub</a>
-      <a href="https://linkedin.com/in/YOUR_USERNAME" class="px-4 py-2 rounded-xl border">LinkedIn</a>
+      <a href="mailto:navoneel.bhattacharya.dev@gmail.com" class="btn px-4 py-2 rounded-xl border">
+        navoneel.bhattacharya.dev@gmail.com
+      </a>
+      <a href="tel:+919593707224" class="btn px-4 py-2 rounded-xl border">
+        +91 95937 07224
+      </a>
     </div>
   </div>
 </section>
 
 <footer class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-slate-500">
-    © <span id="year"></span> Navoneel • Built with HTML & Tailwind • GitHub Pages
+    © <span id="year"></span> Navoneel Bhattacharya • Built with HTML & Tailwind
   </div>
 </footer>
 
+<!-- SCRIPTS -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -219,11 +247,26 @@
     );
   };
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add("visible"));
-  }, { threshold: 0.15 });
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealElements = document.querySelectorAll("[data-reveal]");
 
-  document.querySelectorAll("[data-reveal]").forEach(el => io.observe(el));
+  if (!prefersReducedMotion) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 80}ms`;
+      observer.observe(el);
+    });
+  } else {
+    revealElements.forEach(el => el.classList.add("reveal-visible"));
+  }
 </script>
 
 </body>
