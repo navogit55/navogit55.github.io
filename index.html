@@ -5,27 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Navoneel Bhattacharya • BCA Student</title>
-  <meta name="description" content="Navoneel Bhattacharya — BCA student building clean, animated, modern websites and C projects." />
+  <meta name="description" content="Navoneel Bhattacharya — BCA student building animated, modern web experiences." />
   <meta name="theme-color" content="#0ea5e9" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ===============================
-       GLOBAL STYLES & ANIMATIONS
-  ================================ -->
   <style>
     html { scroll-behavior: smooth; }
     section { scroll-margin-top: 90px; }
 
-    /* Reveal animation */
+    /* ===== Animation System ===== */
     [data-animate] {
       opacity: 0;
       transform: translateY(32px) scale(0.96);
       transition:
         opacity 0.8s ease,
         transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform, opacity;
+      will-change: opacity, transform;
     }
 
     [data-animate].visible {
@@ -33,12 +30,11 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Floating animation */
+    /* Floating */
     @keyframes float {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-
     .float {
       animation: float 6s ease-in-out infinite;
     }
@@ -47,51 +43,33 @@
     .btn {
       transition: transform .25s ease, box-shadow .25s ease;
     }
-
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px rgba(56,189,248,.35);
     }
-
-    .btn:active {
-      transform: translateY(0);
-    }
+    .btn:active { transform: translateY(0); }
 
     /* Cards */
     .card {
       transition: transform .3s ease, box-shadow .3s ease;
     }
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(0,0,0,.12);
     }
 
-    /* Theme transition */
     body {
       transition: background-color .4s ease, color .4s ease;
     }
   </style>
-
-  <!-- Initial theme load (no flicker) -->
-  <script>
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  </script>
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
 
-<!-- ===============================
-     NAVBAR
-================================ -->
+<!-- NAV -->
 <header class="fixed top-0 w-full z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur border-b border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="#home" class="font-semibold tracking-tight">
-      Navoneel Bhattacharya
-    </a>
+    <a href="#home" class="font-semibold">Navoneel Bhattacharya</a>
 
     <nav class="hidden sm:flex gap-6 text-sm">
       <a href="#about" class="hover:text-sky-500">About</a>
@@ -106,11 +84,8 @@
   </div>
 </header>
 
-<!-- ===============================
-     HERO
-================================ -->
+<!-- HERO -->
 <section id="home" class="relative pt-32 overflow-hidden">
-  <!-- Glow -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-1/3 left-1/2 w-[500px] h-[500px]
                 -translate-x-1/2 -translate-y-1/2
@@ -124,7 +99,7 @@
       </h1>
       <p class="text-slate-600 dark:text-slate-300 mb-6">
         First-year <strong>BCA student</strong> building strong foundations in
-        <strong>C programming</strong>, problem solving, and modern web design.
+        <strong>C programming</strong> and modern web design.
       </p>
 
       <div class="flex gap-3 flex-wrap">
@@ -144,32 +119,27 @@
   </div>
 </section>
 
-<!-- ===============================
-     ABOUT
-================================ -->
+<!-- ABOUT -->
 <section id="about" class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-14" data-animate>
     <h2 class="text-2xl font-bold mb-4">About</h2>
     <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
       I’m pursuing a Bachelor of Computer Applications and learning software
-      engineering fundamentals by building real, practical projects.
+      engineering by building real projects.
     </p>
   </div>
 </section>
 
-<!-- ===============================
-     SKILLS
-================================ -->
+<!-- SKILLS -->
 <section id="skills" class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-14">
     <h2 class="text-2xl font-bold mb-6" data-animate>Skills</h2>
-
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div data-animate class="card p-5 rounded-2xl border bg-white dark:bg-slate-950">
         <h3 class="font-semibold mb-2">Programming</h3>
         <ul class="text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
-          <li>C (loops, functions, arrays)</li>
-          <li>Debugging & logic</li>
+          <li>C programming</li>
+          <li>Logic & debugging</li>
           <li>Basic DSA</li>
         </ul>
       </div>
@@ -177,7 +147,7 @@
       <div data-animate class="card p-5 rounded-2xl border bg-white dark:bg-slate-950">
         <h3 class="font-semibold mb-2">Web</h3>
         <ul class="text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
-          <li>HTML & CSS</li>
+          <li>HTML, CSS</li>
           <li>Tailwind CSS</li>
           <li>JavaScript (DOM)</li>
         </ul>
@@ -195,34 +165,7 @@
   </div>
 </section>
 
-<!-- ===============================
-     PROJECTS
-================================ -->
-<section id="projects" class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold mb-6" data-animate>Projects</h2>
-
-    <div class="grid md:grid-cols-2 gap-4">
-      <div data-animate class="card p-5 rounded-2xl border bg-white dark:bg-slate-950">
-        <h3 class="font-semibold">Number Guessing Game (C)</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
-          CLI game built in C to practice control flow and randomness.
-        </p>
-      </div>
-
-      <div data-animate class="card p-5 rounded-2xl border bg-white dark:bg-slate-950">
-        <h3 class="font-semibold">Animated Portfolio Website</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
-          Single-page responsive website with smooth animations and theme toggle.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===============================
-     CONTACT
-================================ -->
+<!-- CONTACT -->
 <section id="contact" class="border-t border-slate-200 dark:border-slate-800">
   <div class="max-w-5xl mx-auto px-4 py-14" data-animate>
     <h2 class="text-2xl font-bold mb-4">Contact</h2>
@@ -245,44 +188,57 @@
   </div>
 </footer>
 
-<!-- ===============================
-     SCRIPTS
-================================ -->
+<!-- ===== JAVASCRIPT (SAFE & ORDERED) ===== -->
 <script>
-  // Footer year
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* YEAR */
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Theme toggle
+  /* THEME SYSTEM */
   const themeToggle = document.getElementById("themeToggle");
   const root = document.documentElement;
 
-  function updateThemeIcon() {
-    themeToggle.textContent = root.classList.contains("dark") ? "☀️" : "🌙";
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      root.classList.add("dark");
+      themeToggle.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      themeToggle.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
   }
 
-  updateThemeIcon();
+  applyTheme(localStorage.getItem("theme") || "light");
 
   themeToggle.addEventListener("click", () => {
-    root.classList.toggle("dark");
-    localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
-    updateThemeIcon();
+    applyTheme(root.classList.contains("dark") ? "light" : "dark");
   });
 
-  // Scroll reveal
+  /* SCROLL ANIMATIONS */
   const animatedItems = document.querySelectorAll("[data-animate]");
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
 
-  animatedItems.forEach(el => observer.observe(el));
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    animatedItems.forEach(el => observer.observe(el));
+  } else {
+    animatedItems.forEach(el => el.classList.add("visible"));
+  }
+
+});
 </script>
 
 </body>
