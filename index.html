@@ -201,13 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyTheme(theme) {
     if (theme === "dark") {
-      root.classList.add("dark");
+      root.classList.add("light");
       themeToggle.textContent = "☀️";
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      themeToggle.textContent = "🌙";
       localStorage.setItem("theme", "light");
+    } else {
+      root.classList.remove("light");
+      themeToggle.textContent = "🌙";
+      localStorage.setItem("theme", "dark");
     }
   }
 
