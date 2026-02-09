@@ -9,6 +9,9 @@
   <meta name="theme-color" content="#0ea5e9" />
 
   <!-- Tailwind CDN -->
+  <script>
+    tailwind = { config: { darkMode: "class" } };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -41,7 +44,7 @@
 
     /* Buttons */
     .btn {
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
     }
     .btn:hover {
       transform: translateY(-3px);
@@ -61,6 +64,18 @@
     body {
       transition: background-color .4s ease, color .4s ease;
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 
@@ -71,16 +86,32 @@
   <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
     <a href="#home" class="font-semibold">Navoneel Bhattacharya</a>
 
-    <nav class="hidden sm:flex gap-6 text-sm">
+    <nav class="hidden sm:flex gap-6 text-sm" aria-label="Primary">
       <a href="#about" class="hover:text-sky-500">About</a>
       <a href="#skills" class="hover:text-sky-500">Skills</a>
       <a href="#projects" class="hover:text-sky-500">Projects</a>
+      <a href="#journey" class="hover:text-sky-500">Journey</a>
       <a href="#contact" class="hover:text-sky-500">Contact</a>
     </nav>
 
-    <button id="themeToggle" class="btn px-3 py-1.5 rounded-xl border text-sm">
-      🌙
-    </button>
+    <div class="flex items-center gap-2">
+      <button id="themeToggle" class="btn px-3 py-1.5 rounded-xl border text-sm" aria-label="Toggle dark mode">
+        🌙
+      </button>
+      <button id="menuToggle" class="sm:hidden btn px-3 py-1.5 rounded-xl border text-sm" aria-expanded="false" aria-controls="mobileMenu">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="sm:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90">
+    <nav class="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-3 text-sm" aria-label="Mobile">
+      <a href="#about" class="hover:text-sky-500">About</a>
+      <a href="#skills" class="hover:text-sky-500">Skills</a>
+      <a href="#projects" class="hover:text-sky-500">Projects</a>
+      <a href="#journey" class="hover:text-sky-500">Journey</a>
+      <a href="#contact" class="hover:text-sky-500">Contact</a>
+    </nav>
   </div>
 </header>
 
@@ -94,39 +125,77 @@
 
   <div class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
     <div data-animate>
+      <p class="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-4">BCA Student • Developer</p>
       <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
         Hi, I’m <span class="text-sky-500">Navoneel</span> 👋
       </h1>
       <p class="text-slate-600 dark:text-slate-300 mb-6">
         First-year <strong>BCA student</strong> building strong foundations in
-        <strong>C programming</strong> and modern web design.
+        <strong>C programming</strong> and modern web design. I craft clean, user-focused
+        interfaces and small utilities that solve real problems.
       </p>
 
       <div class="flex gap-3 flex-wrap">
         <a href="#projects" class="btn px-5 py-2.5 rounded-2xl bg-sky-600 text-white text-sm font-semibold">
           View Projects
         </a>
-        <a href="https://github.com/navogit55" target="_blank"
+        <a href="https://github.com/navogit55" target="_blank" rel="noreferrer"
            class="btn px-5 py-2.5 rounded-2xl border text-sm">
           GitHub
         </a>
+        <a href="#contact" class="btn px-5 py-2.5 rounded-2xl border text-sm">
+          Let’s Talk
+        </a>
+      </div>
+
+      <div class="mt-8 grid grid-cols-2 gap-4 text-sm text-slate-600 dark:text-slate-300">
+        <div class="rounded-2xl border px-4 py-3 bg-white/60 dark:bg-slate-950">
+          <p class="font-semibold text-slate-900 dark:text-white">5+ Projects</p>
+          <p>Web + C programs</p>
+        </div>
+        <div class="rounded-2xl border px-4 py-3 bg-white/60 dark:bg-slate-950">
+          <p class="font-semibold text-slate-900 dark:text-white">Open to internships</p>
+          <p>India • Remote</p>
+        </div>
       </div>
     </div>
 
-    <div data-animate class="justify-self-center float text-6xl">
-      🧑🏻‍💻
+    <div data-animate class="justify-self-center">
+      <div class="relative w-56 h-56 sm:w-64 sm:h-64">
+        <div class="absolute inset-0 rounded-[2.5rem] bg-sky-500/20 blur-2xl"></div>
+        <div class="relative z-10 rounded-[2.5rem] border bg-white/70 dark:bg-slate-950/70 px-8 py-10 flex flex-col items-center gap-3 shadow-lg float">
+          <div class="text-6xl">🧑🏻‍💻</div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 text-center">Turning curiosity into code.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-14" data-animate>
-    <h2 class="text-2xl font-bold mb-4">About</h2>
-    <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
-      I’m pursuing a Bachelor of Computer Applications and learning software
-      engineering by building real projects.
-    </p>
+  <div class="max-w-5xl mx-auto px-4 py-14 grid md:grid-cols-[1.2fr_0.8fr] gap-8 items-center" data-animate>
+    <div>
+      <h2 class="text-2xl font-bold mb-4">About</h2>
+      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
+        I’m pursuing a Bachelor of Computer Applications and learning software engineering by
+        building real projects. I’m excited about full-stack development, thoughtful UI/UX,
+        and creating apps that help people learn and work faster.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 text-sky-600">C Programming</span>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700">Web Design</span>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">Problem Solving</span>
+      </div>
+    </div>
+    <div class="card border rounded-2xl p-6 bg-white dark:bg-slate-950">
+      <h3 class="font-semibold mb-3">Now Learning</h3>
+      <ul class="text-sm space-y-2 text-slate-600 dark:text-slate-300">
+        <li class="flex items-center gap-2"><span>✅</span> Data Structures in C</li>
+        <li class="flex items-center gap-2"><span>✅</span> Responsive Web Layouts</li>
+        <li class="flex items-center gap-2"><span>✅</span> JavaScript Fundamentals</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -165,26 +234,134 @@
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects" class="border-t border-slate-200 dark:border-slate-800">
+  <div class="max-w-5xl mx-auto px-4 py-14">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4" data-animate>
+      <div>
+        <h2 class="text-2xl font-bold mb-2">Projects</h2>
+        <p class="text-slate-600 dark:text-slate-300">Highlighted builds from coursework and practice.</p>
+      </div>
+      <a href="https://github.com/navogit55" target="_blank" rel="noreferrer" class="btn px-4 py-2 rounded-xl border text-sm">View all</a>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-4">
+      <article data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950 flex flex-col">
+        <h3 class="font-semibold mb-2">C Study Buddy</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">A CLI toolkit that quizzes C syntax, pointers, and common patterns with instant feedback.</p>
+        <div class="mt-auto flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-sky-100 text-sky-600">C</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-600">CLI</span>
+        </div>
+      </article>
+
+      <article data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950 flex flex-col">
+        <h3 class="font-semibold mb-2">Campus Events Hub</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">A responsive web page template to showcase college events with schedule and RSVP UI.</p>
+        <div class="mt-auto flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">HTML</span>
+          <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Tailwind</span>
+        </div>
+      </article>
+
+      <article data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950 flex flex-col">
+        <h3 class="font-semibold mb-2">Study Planner</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">A JavaScript mini app to plan weekly study sessions, set goals, and track streaks.</p>
+        <div class="mt-auto flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-amber-100 text-amber-700">JavaScript</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-600">UI</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="border-t border-slate-200 dark:border-slate-800">
+  <div class="max-w-5xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-6" data-animate>Learning Journey</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Semester 1</p>
+        <h3 class="font-semibold mt-2 mb-3">Core Foundations</h3>
+        <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <li>• Programming fundamentals</li>
+          <li>• C lab practice</li>
+          <li>• Digital systems basics</li>
+        </ul>
+      </div>
+      <div data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Semester 2</p>
+        <h3 class="font-semibold mt-2 mb-3">Web Exploration</h3>
+        <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <li>• HTML, CSS layouts</li>
+          <li>• JavaScript practice</li>
+          <li>• UI prototyping</li>
+        </ul>
+      </div>
+      <div data-animate class="card border rounded-2xl p-5 bg-white dark:bg-slate-950">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Next</p>
+        <h3 class="font-semibold mt-2 mb-3">Growth Goals</h3>
+        <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <li>• Build full-stack apps</li>
+          <li>• Contribute to OSS</li>
+          <li>• Internship readiness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-14" data-animate>
-    <h2 class="text-2xl font-bold mb-4">Contact</h2>
-    <div class="flex gap-3 flex-wrap">
-      <a href="mailto:navoneel.bhattacharya.dev@gmail.com"
-         class="btn px-4 py-2 rounded-xl border">
-        navoneel.bhattacharya.dev@gmail.com
-      </a>
-      <a href="tel:+919593707224"
-         class="btn px-4 py-2 rounded-xl border">
-        +91 95937 07224
-      </a>
+  <div class="max-w-5xl mx-auto px-4 py-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-10" data-animate>
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Contact</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-6">
+        Want to collaborate, share feedback, or discuss internships? Send a message and I’ll get back soon.
+      </p>
+      <div class="flex flex-col gap-3 text-sm">
+        <a href="mailto:navoneel.bhattacharya.dev@gmail.com" class="btn px-4 py-2 rounded-xl border">
+          navoneel.bhattacharya.dev@gmail.com
+        </a>
+        <a href="tel:+919593707224" class="btn px-4 py-2 rounded-xl border">
+          +91 95937 07224
+        </a>
+        <div class="flex gap-3">
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" class="btn px-4 py-2 rounded-xl border">LinkedIn</a>
+          <a href="https://github.com/navogit55" target="_blank" rel="noreferrer" class="btn px-4 py-2 rounded-xl border">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card border rounded-2xl p-6 bg-white dark:bg-slate-950">
+      <form id="contactForm" class="space-y-4" novalidate>
+        <div>
+          <label class="text-sm font-medium" for="name">Name</label>
+          <input id="name" name="name" type="text" required class="mt-2 w-full rounded-xl border px-3 py-2 bg-transparent" placeholder="Your name" />
+          <p class="text-xs text-rose-500 mt-1 hidden" data-error-for="name">Please enter your name.</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium" for="email">Email</label>
+          <input id="email" name="email" type="email" required class="mt-2 w-full rounded-xl border px-3 py-2 bg-transparent" placeholder="you@example.com" />
+          <p class="text-xs text-rose-500 mt-1 hidden" data-error-for="email">Please enter a valid email.</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium" for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required class="mt-2 w-full rounded-xl border px-3 py-2 bg-transparent" placeholder="Tell me about your project..."></textarea>
+          <p class="text-xs text-rose-500 mt-1 hidden" data-error-for="message">Please add a short message.</p>
+        </div>
+        <button type="submit" class="btn w-full px-5 py-2.5 rounded-2xl bg-sky-600 text-white text-sm font-semibold">Send Message</button>
+        <p id="formSuccess" class="text-sm text-emerald-500 hidden">Thanks! Your message is ready to be emailed.</p>
+      </form>
     </div>
   </div>
 </section>
 
 <footer class="border-t border-slate-200 dark:border-slate-800">
-  <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-slate-500 dark:text-slate-400">
-    © <span id="year"></span> Navoneel Bhattacharya
+  <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    <span>© <span id="year"></span> Navoneel Bhattacharya</span>
+    <span class="text-xs">Built with HTML + Tailwind + vanilla JS.</span>
   </div>
 </footer>
 
@@ -201,20 +378,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyTheme(theme) {
     if (theme === "dark") {
-      root.classList.add("light");
+      root.classList.add("dark");
       themeToggle.textContent = "☀️";
-      localStorage.setItem("theme", "light");
-    } else {
-      root.classList.remove("light");
-      themeToggle.textContent = "🌙";
       localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      themeToggle.textContent = "🌙";
+      localStorage.setItem("theme", "light");
     }
   }
 
-  applyTheme(localStorage.getItem("theme") || "light");
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
 
   themeToggle.addEventListener("click", () => {
     applyTheme(root.classList.contains("dark") ? "light" : "dark");
+  });
+
+  /* MOBILE MENU */
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("hidden") === false;
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
   });
 
   /* SCROLL ANIMATIONS */
@@ -237,6 +432,43 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     animatedItems.forEach(el => el.classList.add("visible"));
   }
+
+  /* CONTACT FORM */
+  const form = document.getElementById("contactForm");
+  const successMessage = document.getElementById("formSuccess");
+
+  function showError(field, hasError) {
+    const errorEl = form.querySelector(`[data-error-for="${field.id}"]`);
+    if (errorEl) {
+      errorEl.classList.toggle("hidden", !hasError);
+    }
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const isNameValid = name.value.trim().length > 1;
+    const isEmailValid = email.validity.valid;
+    const isMessageValid = message.value.trim().length > 4;
+
+    showError(name, !isNameValid);
+    showError(email, !isEmailValid);
+    showError(message, !isMessageValid);
+
+    if (isNameValid && isEmailValid && isMessageValid) {
+      successMessage.classList.remove("hidden");
+      const subject = encodeURIComponent(`Hello from ${name.value.trim()}`);
+      const body = encodeURIComponent(`${message.value.trim()}\n\nFrom: ${name.value.trim()} (${email.value.trim()})`);
+      const mailto = `mailto:navoneel.bhattacharya.dev@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+      form.reset();
+    } else {
+      successMessage.classList.add("hidden");
+    }
+  });
 
 });
 </script>
